@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALABIBAS | About Us</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- lets the scroll animation hide things only when JavaScript is running -->
+<script>document.documentElement.classList.add("js");</script>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: "Poppins", system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  main { flex: 1; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    background: #f8f0de;
+    padding: 14px 24px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .top-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .top-row h1 { grid-column: 2; line-height: 0; }
+  .top-row h1 img { max-height: 48px; width: auto; }
+
+  .login-reg {
+    grid-column: 3;
+    justify-self: end;
+    font-size: 0.7rem;
+  }
+
+  .login-reg a:hover { text-decoration: underline; }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 60px;
+  }
+
+  nav a {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  nav a:hover { text-decoration: underline; }
+  nav a.active { font-weight: 700; }
+
+  /* ---------- HERO (unchanged) ---------- */
+  .about-hero {
+    position: relative;
+    aspect-ratio: 5 / 2;
+    min-height: 260px;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 6%;
+  }
+
+  /* the background photo fills the whole hero */
+  .about-hero > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* dark overlay so the white text is readable */
+  .about-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.38));
+  }
+
+  .about-hero h1,
+  .about-hero .tagline,
+  .about-hero .hero-note {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-hero h1 {
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .about-hero .tagline {
+    font-weight: 400;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+
+  .about-hero .hero-note {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5%;
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  /* ---------- INTRO ---------- */
+  .about-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 24px 0;
+    text-align: center;
+  }
+
+  .about-container p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #6f6f6f;
+  }
+
+  .about-container::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 3px;
+    margin: 26px auto 0;
+    border-radius: 3px;
+    background: #a0663a;
+  }
+
+  /* ---------- SHARED SECTION STYLES ---------- */
+  .section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 56px 24px 0;
+  }
+
+  .eyebrow {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a0663a;
+  }
+
+  .section h2 {
+    margin-bottom: 26px;
+    text-align: center;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700;
+  }
+
+  /* ---------- OUR STORY ---------- */
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .story-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    aspect-ratio: 1 / 1;
+    max-height: 300px;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 20px;
+    background: #b0b998;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    text-align: center;
+  }
+
+  .story-badge span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .story-badge strong {
+    font-size: clamp(3rem, 7vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .story-badge em {
+    margin-top: 8px;
+    padding: 5px 16px;
+    border-radius: 999px;
+    background: #f8f0de;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .story-text p {
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #444;
+  }
+
+  /* ---------- MISSION & VISION ---------- */
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .mv-card {
+    padding: 30px 28px 32px;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  .mv-card.mission { background: #b0b998; color: #000; }
+  .mv-card.vision  { background: #a36233; color: #fff; }
+
+  .mv-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background: #f8f0de;
+    color: #a0663a;
+    font-size: 1.2rem;
+  }
+
+  .mv-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .mv-card p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  /* ---------- CORE VALUES ---------- */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .value-card {
+    padding: 24px 18px 26px;
+    border: 1px solid #e6dcc3;
+    border-radius: 16px;
+    background: #fff;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  }
+
+  .value-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: #f8f0de;
+    color: #a0663a;
+    font-size: 1.3rem;
+  }
+
+  .value-card h3 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .value-card p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  /* ---------- PROMISES ---------- */
+  .promise {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    background: #f8f0de;
+    text-align: center;
+  }
+
+  .promise-item { padding: 6px 10px; }
+
+  .promise-item strong {
+    display: block;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 700;
+    color: #a0663a;
+  }
+
+  .promise-item span {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ---------- CALL TO ACTION ---------- */
+  .cta {
+    max-width: 1000px;
+    margin: 56px auto 56px;
+    padding: 0 24px;
+  }
+
+  .cta-box {
+    padding: 44px 24px;
+    border-radius: 20px;
+    background: #b0b998;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    text-align: center;
+  }
+
+  .cta-box h2 {
+    margin-bottom: 8px;
+    font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+    font-weight: 700;
+  }
+
+  .cta-box p {
+    max-width: 480px;
+    margin: 0 auto 22px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 11px 30px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background 0.2s ease;
+  }
+
+  .btn.primary { background: #a0663a; color: #fff; }
+  .btn.primary:hover { background: #8a5630; }
+
+  .btn.secondary { background: #f8f0de; color: #000; }
+  .btn.secondary:hover { background: #ece2c8; }
+
+  .btn:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+
+  /* ---------- SCROLL ANIMATION ---------- */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .value-card { transition: none; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    margin-top: auto;
+    background: #f8f0de;
+    padding-top: 28px;
+  }
+
+  .footer-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+  }
+
+  .footer-cols {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .footer-col h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .footer-col a,
+  .footer-col p {
+    display: block;
+    font-size: 0.80rem;
+    color: #000;
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  .footer-col a:hover { text-decoration: underline; }
+
+  .socials {
+    display: flex;
+    gap: 8px;
+    margin: 4px 0 6px;
+  }
+
+  .socials a { display: inline-flex; }
+  .socials svg { width: 20px; height: 20px; }
+
+  .footer-image img {
+    display: block;
+    width: 200px;
+    height: auto;
+  }
+
+  .copyright {
+    border-top: 1px solid #d8cfba;
+    text-align: center;
+    font-size: 0.65rem;
+    padding: 14px 20px;
+  }
+
+  /* ---------- TABLETS ---------- */
+  @media (max-width: 860px) {
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- PHONES ---------- */
+  @media (max-width: 600px) {
+    header { padding: 12px 16px; }
+    nav { gap: 8px 24px; }
+    .about-hero { aspect-ratio: auto; height: 62vw; min-height: 240px; }
+    .about-container { padding: 30px 24px 0; }
+    .about-container p { font-size: 1.05rem; }
+    .section { padding-top: 44px; }
+    .story { grid-template-columns: 1fr; }
+    .story-badge { max-width: 220px; aspect-ratio: auto; padding: 24px 0; }
+    .mv-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr; }
+    .promise { grid-template-columns: 1fr; padding: 20px; }
+    .cta { margin: 44px auto; }
+    .footer-main { justify-content: center; padding-left: 20px; }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="top-row">
+    <h1><a href="index.html"><img src="images/logo.webp" alt="ALABIBAS"></a></h1>
+    <span class="login-reg" id="authBox"><a href="login.html?next=aboutus.html" id="authLink">Login / Register</a></span>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Shopping Cart</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="aboutus.html" class="active">About Us</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Hero (same image as before) -->
+  <section class="about-hero">
+    <img src="images/Background.webp" alt="ALABIBAS clothing">
+    <h1>About Us</h1>
+    <p class="tagline">Comfort &amp; Quality</p>
+    <p class="hero-note">
+      Welcome to ALABIBAS<br>
+      A modern online store created for people who want style, comfort, and quality.
+    </p>
+  </section>
+
+  <!-- Intro -->
+  <div class="about-container reveal">
+    <p>Our goal is to provide products that look great while remaining accessible and comfortable for everyday life.</p>
+  </div>
+
+  <!-- Our story -->
+  <section class="section reveal" aria-labelledby="story-title">
+    <p class="eyebrow">Who we are</p>
+    <h2 id="story-title">Our Story</h2>
+
+    <div class="story">
+      <div class="story-badge" aria-hidden="true">
+        <span>Est.</span>
+        <strong>2026</strong>
+        <em>Own the Look</em>
+      </div>
+
+      <div class="story-text">
+        <p>ALABIBAS began with a simple idea: everyone deserves clothing that looks good, feels good, and stays within reach. From Davao City, we set out to build a modern online store for people who want style, comfort, and quality in the same piece.</p>
+        <p>Today we offer everyday tops and bottoms designed to mix, match, and last. Whether you are dressing up for a day out or keeping things relaxed, our collection is made to help you find a look that feels like you.</p>
+        <p>Our tagline says it best: <strong>Own the Look.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & vision -->
+  <section class="section reveal" aria-labelledby="mv-title">
+    <p class="eyebrow">What drives us</p>
+    <h2 id="mv-title">Our Mission &amp; Vision</h2>
+
+    <div class="mv-grid">
+      <article class="mv-card mission">
+        <div class="mv-icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Our Mission</h3>
+        <p>To provide stylish, comfortable, and high-quality clothing that is accessible to everyone, and to make shopping with us simple, honest, and enjoyable from the first click to the final fitting.</p>
+      </article>
+
+      <article class="mv-card vision">
+        <div class="mv-icon" aria-hidden="true"><i class="fa-solid fa-eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>To become a trusted Filipino clothing brand that helps people express themselves with confidence, one look at a time, and to grow alongside the community that wears us.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Core values -->
+  <section class="section reveal" aria-labelledby="values-title">
+    <p class="eyebrow">What we stand for</p>
+    <h2 id="values-title">Our Core Values</h2>
+
+    <div class="values-grid">
+      <article class="value-card">
+        <div class="value-icon" aria-hidden="true"><i class="fa-solid fa-award"></i></div>
+        <h3>Quality First</h3>
+        <p>We choose fabrics and finishes that hold up to everyday wear, wash after wash.</p>
+      </article>
+
+      <article class="value-card">
+        <div class="value-icon" aria-hidden="true"><i class="fa-solid fa-shirt"></i></div>
+        <h3>Everyday Comfort</h3>
+        <p>Good style should never feel tight, itchy, or complicated. Comfort is part of every design.</p>
+      </article>
+
+      <article class="value-card">
+        <div class="value-icon" aria-hidden="true"><i class="fa-solid fa-palette"></i></div>
+        <h3>Own Your Style</h3>
+        <p>We make pieces that let you mix, match, and be yourself, without following anyone else's rules.</p>
+      </article>
+
+      <article class="value-card">
+        <div class="value-icon" aria-hidden="true"><i class="fa-solid fa-handshake-angle"></i></div>
+        <h3>Customer Care</h3>
+        <p>Real people are ready to help, and we stand behind every order we send out.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Promises -->
+  <section class="section reveal" aria-labelledby="promise-title">
+    <p class="eyebrow">Shop with confidence</p>
+    <h2 id="promise-title">Our Promise to You</h2>
+
+    <div class="promise">
+      <div class="promise-item">
+        <strong>7 Days</strong>
+        <span>Easy returns</span>
+      </div>
+      <div class="promise-item">
+        <strong>8AM &ndash; 5PM</strong>
+        <span>Customer support</span>
+      </div>
+      <div class="promise-item">
+        <strong>Davao City</strong>
+        <span>Visit our store</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action -->
+  <section class="cta reveal" aria-labelledby="cta-title">
+    <div class="cta-box">
+      <h2 id="cta-title">Ready to find your look?</h2>
+      <p>Browse our latest tops and bottoms, or drop by our store and see the collection for yourself.</p>
+      <div class="cta-actions">
+        <a class="btn primary" href="products.html">Shop Now</a>
+        <a class="btn secondary" href="storelocator.html">Find Our Store</a>
+        <a class="btn secondary" href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="aboutus.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Condition</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M12 2a10 10 0 0 0-1.56 19.88v-7.02H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.86h-2.34v7.02A10 10 0 0 0 12 2z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#000" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.1 6.1 0 1 0 5.2 6V8.6a7.4 7.4 0 0 0 4.3 1.4V6.8a4.3 4.3 0 0 1-4.3-4.8z"/></svg>
+          </a>
+        </div>
+        <a href="mailto:alabibas.apparel@gmail.com">alabibas.apparel@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="footer-image">
+      <img src="images/tagline.webp" alt="Own the Look - Alabibas">
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>&copy; 2026 Alabibas. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // sections fade in as you scroll down to them
+  (function () {
+    var items = document.querySelectorAll(".reveal");
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    items.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
+
+<!-- ★★★ LOGIN: shows "Hi, Name | Logout" in the header when someone is logged in ★★★ -->
+<script>
+  // The login page saves the logged-in person under the key "alabibasUser".
+  (function () {
+    var box = document.getElementById("authBox");
+    var user = null;
+    try { user = JSON.parse(localStorage.getItem("alabibasUser")); } catch (e) {}
+    if (!box || !user) return;           // keeps the normal "Login / Register" link
+
+    box.textContent = "Hi, " + (user.name || "there") + " | ";
+    var out = document.createElement("a");
+    out.href = "#";
+    out.textContent = "Logout";
+    out.addEventListener("click", function (e) {
+      e.preventDefault();
+      localStorage.removeItem("alabibasUser");
+      location.reload();
+    });
+    box.appendChild(out);
+  })();
+</script>
+
+<script src="chat.js"></script>
+</body>
+</html>

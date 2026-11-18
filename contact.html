@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALABIBAS | Contact Us</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #f8f0de;
+    --sage: #b0b998;
+    --brown: #a0663a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Poppins", Arial, sans-serif;
+    color: #000;
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Header ---------- */
+  header {
+    background: var(--cream);
+    text-align: center;
+    padding: 20px 20px 14px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1;
+  }
+
+  header h1 { margin-bottom: 8px; line-height: 0; }
+  header h1 img { max-height: 48px; width: auto; }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 60px;
+  }
+
+  nav a {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  nav a:hover { text-decoration: underline; }
+  nav a.active { font-weight: 700; }
+
+  /* ---------- Contact ---------- */
+  main { flex: 1; display: flex; flex-direction: column; }
+
+  .contact {
+    flex: 1;
+    width: 100%;
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 343fr 407fr;
+  }
+
+  /* Left: photo with text on top */
+  .contact-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px 36px;
+    color: #fff;
+    background: #2c3320 url("images/contact-hero.webp") center top / cover no-repeat;
+  }
+
+  .contact-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 10%, rgba(0,0,0,1));
+  }
+
+  .contact-hero > * { position: relative; }
+
+  .contact-hero h2 {
+    font-size: 5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .contact-hero p {
+    max-width: 22em;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.45;
+    margin-bottom: 16px;
+  }
+
+  .socials { display: flex; gap: 10px; }
+  .socials a { display: inline-flex; }
+  .socials svg { width: 40px; height: 40px; }
+
+  /* Right: form card */
+  .contact-form-wrap {
+    display: flex;
+    padding: 100px 30px 100px 300px;
+  }
+
+  .form-card {
+    flex: ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--sage);
+    border-radius: 28px;
+    padding: 36px 32px 32px;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .form-card h3 {
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    font-weight: 600;
+    line-height: 1.45;
+    margin-bottom: 24px;
+  }
+
+  label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin: 0 0 4px 6px;
+  }
+
+  input {
+    width: 500px;
+    height: 40px;
+    margin-bottom: 14px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: #fff;
+    color: #000;
+    font: inherit;
+    font-size: 1rem;
+  }
+
+  button {
+    display: block;
+    margin: 26px auto 0;
+    padding: 16px 30px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--brown);
+    color: #fff;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  button:hover { background: #8a5630; }
+
+  .status {
+    min-height: 1.2em;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  input:focus-visible,
+  button:focus-visible,
+  a:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: auto;
+    background: #f8f0de;
+    padding-top: 28px;
+  }
+
+  .footer-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+  }
+
+  .footer-cols {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .footer-col h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .footer-col a,
+  .footer-col p {
+    display: block;
+    font-size: 0.80rem;
+    color: #000;
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  .footer-col a:hover { text-decoration: underline; }
+
+  .footer-socials {
+    display: flex;
+    gap: 8px;
+    margin: 4px 0 6px;
+  }
+
+  .footer-socials a { display: inline-flex; }
+  .footer-socials svg { width: 20px; height: 20px; }
+
+  .footer-image img {
+    display: block;
+    width: 200px;
+    height: auto;
+  }
+
+  .copyright {
+    border-top: 1px solid #d8cfba;
+    text-align: center;
+    font-size: 0.65rem;
+    padding: 14px 20px;
+  }
+
+  /* ---------- Small screens ---------- */
+  @media (max-width: 700px) {
+    nav { gap: 8px 24px; }
+    .contact { grid-template-columns: 1fr; min-height: 0; }
+    .contact-hero { min-height: 340px; }
+    .footer-main { justify-content: center; padding-left: 20px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Shared social icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-1.56 19.88v-7.02H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.86h-2.34v7.02A10 10 0 0 0 12 2z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.1 6.1 0 1 0 5.2 6V8.6a7.4 7.4 0 0 0 4.3 1.4V6.8a4.3 4.3 0 0 1-4.3-4.8z"/></symbol>
+</svg>
+
+<header>
+  <h1><a href="index.html"><img src="images/logo.webp" alt="ALABIBAS"></a></h1>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Shopping Cart</a>
+    <a href="contact.html" class="active">Contact Us</a>
+    <a href="aboutus.html">About Us</a>
+  </nav>
+</header>
+
+<main>
+  <section class="contact">
+
+    <!-- Left: photo + intro -->
+    <div class="contact-hero">
+      <h2>Contact Us</h2>
+      <p>We'd love to hear from you. Whether you have a question, feedback, or just want to say hello, our team is here to help.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg><use href="#i-facebook"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg><use href="#i-tiktok"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact-form-wrap">
+      <div class="form-card">
+        <h3>Have a question?<br>Send us a message.</h3>
+
+        <form id="contact-form">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+
+          <button type="submit">Send</button>
+          <p class="status" id="status" role="status"></p>
+        </form>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="aboutus.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Condition</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"><svg><use href="#i-facebook"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg><use href="#i-tiktok"/></svg></a>
+        </div>
+        <a href="mailto:alabibas.apparel@gmail.com">alabibas.apparel@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="footer-image">
+      <img src="images/tagline.webp" alt="Own the Look - Alabibas">
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>&copy; 2026 Alabibas. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("status").textContent = "Message sent. Thank you!";
+    this.reset();
+  });
+</script>
+
+<script src="chat.js"></script>
+</body>
+</html>

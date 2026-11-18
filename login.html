@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALABIBAS | Login / Register</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Poppins", Arial, sans-serif;
+    color: #000;
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  main { flex: 1; }
+
+  /* ---------- Header ---------- */
+  header {
+    background: #f8f0de;
+    text-align: center;
+    padding: 20px 20px 14px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  header h1 { margin-bottom: 8px; line-height: 0; }
+  header h1 img { max-height: 48px; width: auto; }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 60px;
+  }
+
+  nav a {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  nav a:hover { text-decoration: underline; }
+
+  /* ---------- Login / Register card ---------- */
+  .auth-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px 60px;
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #b0b998;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    margin-bottom: 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.28);
+  }
+
+  .tab {
+    flex: 1;
+    border: none;
+    border-radius: 999px;
+    padding: 9px 12px;
+    background: transparent;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .tab[aria-selected="true"] { background: #a0663a; }
+  .tab:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+
+  .auth-card h2 {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+
+  .field { margin-bottom: 14px; }
+
+  .field label {
+    display: block;
+    color: #fff;
+    font-size: 0.8rem;
+    margin: 0 0 4px 6px;
+  }
+
+  .field input {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 11px 16px;
+    background: #fff;
+    color: #222;
+    font-family: inherit;
+    font-size: 0.9rem;
+  }
+
+  .field input:focus-visible { outline: 2px solid #a0663a; outline-offset: 2px; }
+
+  .form-msg {
+    margin-bottom: 14px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: #f8f0de;
+    color: #8a2b1c;
+    font-size: 0.8rem;
+  }
+
+  .form-msg[hidden] { display: none; }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 4px;
+    border: none;
+    border-radius: 999px;
+    padding: 11px;
+    background: #a36233;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .submit-btn:hover { background: #8a5630; }
+  .submit-btn:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+
+  .switch-note {
+    margin-top: 16px;
+    text-align: center;
+    color: #fff;
+    font-size: 0.8rem;
+  }
+
+  .switch-note button {
+    border: none;
+    background: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* shown instead of the forms when someone is already logged in */
+  .logged-in { text-align: center; color: #fff; }
+  .logged-in p { margin: 6px 0 20px; font-size: 0.95rem; }
+  .logged-in .actions { display: flex; flex-direction: column; gap: 10px; }
+
+  .logged-in .submit-btn { display: block; }
+
+  .logged-in .secondary {
+    background: #f8f0de;
+    color: #000;
+  }
+
+  .logged-in .secondary:hover { background: #ece2c8; }
+
+  [hidden] { display: none !important; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: auto;
+    background: #f8f0de;
+    padding-top: 28px;
+  }
+
+  .footer-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+  }
+
+  .footer-cols {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .footer-col h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .footer-col a,
+  .footer-col p {
+    display: block;
+    font-size: 0.80rem;
+    color: #000;
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  .footer-col a:hover { text-decoration: underline; }
+
+  .socials {
+    display: flex;
+    gap: 8px;
+    margin: 4px 0 6px;
+  }
+
+  .socials a { display: inline-flex; }
+  .socials svg { width: 20px; height: 20px; }
+
+  .footer-image img {
+    display: block;
+    width: 200px;
+    height: auto;
+  }
+
+  .copyright {
+    border-top: 1px solid #d8cfba;
+    text-align: center;
+    font-size: 0.65rem;
+    padding: 14px 20px;
+  }
+
+  @media (max-width: 600px) {
+    nav { gap: 8px 24px; }
+    .auth-wrap { padding: 30px 16px 40px; }
+    .footer-main { justify-content: center; padding-left: 20px; }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1><a href="index.html"><img src="images/logo.webp" alt="ALABIBAS"></a></h1>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Shopping Cart</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="aboutus.html">About Us</a>
+  </nav>
+</header>
+
+<main>
+  <div class="auth-wrap">
+    <div class="auth-card">
+
+      <!-- Shown when someone is already logged in -->
+      <div class="logged-in" id="loggedIn" hidden>
+        <h2>You're logged in</h2>
+        <p id="loggedInText"></p>
+        <div class="actions">
+          <a class="submit-btn" id="continueLink" href="index.html">Continue</a>
+          <button class="submit-btn secondary" id="logoutBtn" type="button">Log out</button>
+        </div>
+      </div>
+
+      <!-- Login / Register forms -->
+      <div id="authForms">
+        <div class="tabs" role="tablist">
+          <button class="tab" id="tabLogin" type="button" role="tab" aria-selected="true" aria-controls="loginPanel">Login</button>
+          <button class="tab" id="tabRegister" type="button" role="tab" aria-selected="false" aria-controls="registerPanel">Register</button>
+        </div>
+
+        <!-- Login -->
+        <form id="loginPanel" role="tabpanel" novalidate>
+          <h2>Welcome back</h2>
+          <div class="form-msg" id="loginMsg" role="alert" hidden></div>
+
+          <div class="field">
+            <label for="loginEmail">Email or username</label>
+            <input type="text" id="loginEmail" autocomplete="username" required>
+          </div>
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" autocomplete="current-password" required>
+          </div>
+
+          <button class="submit-btn" type="submit">Login</button>
+
+          <p class="switch-note">No account yet? <button type="button" id="toRegister">Register</button></p>
+        </form>
+
+        <!-- Register -->
+        <form id="registerPanel" role="tabpanel" novalidate hidden>
+          <h2>Create an account</h2>
+          <div class="form-msg" id="registerMsg" role="alert" hidden></div>
+
+          <div class="field">
+            <label for="regName">Full name</label>
+            <input type="text" id="regName" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="regPassword">Password (at least 6 characters)</label>
+            <input type="password" id="regPassword" autocomplete="new-password" required>
+          </div>
+          <div class="field">
+            <label for="regConfirm">Confirm password</label>
+            <input type="password" id="regConfirm" autocomplete="new-password" required>
+          </div>
+
+          <button class="submit-btn" type="submit">Register</button>
+
+          <p class="switch-note">Already have an account? <button type="button" id="toLogin">Login</button></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="aboutus.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Condition</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M12 2a10 10 0 0 0-1.56 19.88v-7.02H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.86h-2.34v7.02A10 10 0 0 0 12 2z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#000" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.1 6.1 0 1 0 5.2 6V8.6a7.4 7.4 0 0 0 4.3 1.4V6.8a4.3 4.3 0 0 1-4.3-4.8z"/></svg>
+          </a>
+        </div>
+        <a href="mailto:alabibas.apparel@gmail.com">alabibas.apparel@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="footer-image">
+      <img src="images/tagline.webp" alt="Own the Look - Alabibas">
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>&copy; 2026 Alabibas. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="auth.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>

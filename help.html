@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALABIBAS | Help</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Poppins", Arial, sans-serif;
+    color: #000;
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+
+  /* ---------- Header ---------- */
+  header {
+    background: #f8f0de;
+    padding: 14px 24px 14px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .top-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .top-row h1 { grid-column: 2; line-height: 0; }
+  .top-row h1 img { max-height: 48px; width: auto; }
+
+  .login-reg { grid-column: 3; justify-self: end; font-size: 0.7rem; }
+  .login-reg:hover { text-decoration: underline; }
+
+  nav.main-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 60px;
+  }
+
+  nav.main-nav a { text-transform: uppercase; font-size: 0.8rem; }
+  nav.main-nav a:hover { text-decoration: underline; }
+  nav.main-nav a.active { font-weight: 700; }
+
+  /* ---------- Breadcrumb ---------- */
+  main { flex: 1; }
+
+  .breadcrumb {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px 20px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .breadcrumb a { text-decoration: underline; }
+
+  /* ---------- FAQ card ---------- */
+  .faq-card {
+    max-width: 1000px;
+    margin: 0 auto 10px;
+    width: calc(100% - 40px);
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 22px 28px 36px;
+  }
+
+  .faq-card h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding-left: 10px;
+    margin-bottom: 14px;
+  }
+
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0 40px;
+    align-items: start;
+  }
+
+  /* category tabs */
+  .faq-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .faq-tabs button {
+    background: #dedede;
+    border: 1px solid #c9c9c9;
+    padding: 2px 8px;
+    text-align: left;
+    font-size: 0.72rem;
+    cursor: pointer;
+  }
+
+  .faq-tabs button:hover { background: #d0d0d0; }
+
+  .faq-tabs button[aria-selected="true"] {
+    background: #fff;
+    border-color: #999;
+    font-weight: 600;
+  }
+
+  /* answers */
+  .faq-intro { font-size: 0.78rem; margin: 8px 0 14px; }
+
+  .faq-item {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .faq-item > button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 9px 12px;
+    background: none;
+    border: 0;
+    text-align: left;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+
+  .faq-item > button i { font-size: 0.95rem; width: 16px; text-align: center; }
+  .faq-item > button:hover { background: #faf6ec; }
+
+  .faq-answer {
+    padding: 4px 16px 14px 42px;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: #222;
+  }
+
+  .faq-answer[hidden] { display: none; }
+
+  /* ---------- Quick links ---------- */
+  .quick-links {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px 44px;
+  }
+
+  .quick-links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.6rem;
+  }
+
+  .quick-links i { font-size: 1.6rem; }
+  .quick-links a:hover span { text-decoration: underline; }
+  .quick-links a.current span { font-weight: 700; }
+
+  /* ---------- Footer ---------- */
+  footer { margin-top: auto; background: #f8f0de; padding-top: 28px; }
+
+  .footer-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+  }
+
+  .footer-cols { display: flex; gap: 36px; flex-wrap: wrap; }
+
+  .footer-col h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .footer-col a,
+  .footer-col p {
+    display: block;
+    font-size: 0.80rem;
+    color: #000;
+    line-height: 1.5;
+  }
+
+  .footer-col a:hover { text-decoration: underline; }
+
+  .socials { display: flex; gap: 8px; margin: 4px 0 6px; }
+  .socials a { display: inline-flex; }
+  .socials svg { width: 20px; height: 20px; }
+
+  .footer-image img { display: block; width: 200px; height: auto; }
+
+  .copyright {
+    border-top: 1px solid #d8cfba;
+    text-align: center;
+    font-size: 0.65rem;
+    padding: 14px 20px;
+  }
+
+  /* ---------- Small screens ---------- */
+  @media (max-width: 700px) {
+    nav.main-nav { gap: 8px 24px; }
+    .faq-card { padding: 18px 14px 24px; }
+    .faq-layout { grid-template-columns: 1fr; }
+    .faq-tabs { flex-direction: row; flex-wrap: wrap; margin-bottom: 8px; }
+    .faq-tabs button { font-size: 0.7rem; }
+    .faq-answer { padding-left: 16px; }
+    .footer-main { justify-content: center; padding-left: 20px; }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="top-row">
+    <h1><a href="index.html"><img src="images/logo.webp" alt="ALABIBAS"></a></h1>
+    <span class="login-reg" id="authBox"><a href="login.html?next=help.html" id="authLink">Login / Register</a></span>
+  </div>
+
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Shopping Cart</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="aboutus.html">About Us</a>
+  </nav>
+</header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="help.html">FAQ(EN - PHILIPPINES)</a>
+  </div>
+
+  <section class="faq-card">
+    <h2>FAQ</h2>
+
+    <div class="faq-layout">
+      <div class="faq-tabs" role="tablist" aria-label="FAQ categories" id="tabs"></div>
+
+      <div>
+        <p class="faq-intro" id="intro"></p>
+        <div id="list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick links -->
+  <nav class="quick-links" aria-label="Help and services">
+    <a href="orderstatus.html"><i class="fa-solid fa-box"></i><span>ORDER STATUS</span></a>
+    <a href="storelocator.html"><i class="fa-solid fa-store"></i><span>STORE LOCATOR</span></a>
+    <a href="returns.html"><i class="fa-solid fa-arrows-rotate"></i><span>RETURNS</span></a>
+    <a href="help.html" class="current"><i class="fa-regular fa-circle-question"></i><span>HELP</span></a>
+  </nav>
+</main>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="aboutus.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Condition</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M12 2a10 10 0 0 0-1.56 19.88v-7.02H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.86h-2.34v7.02A10 10 0 0 0 12 2z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#000" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.1 6.1 0 1 0 5.2 6V8.6a7.4 7.4 0 0 0 4.3 1.4V6.8a4.3 4.3 0 0 1-4.3-4.8z"/></svg>
+          </a>
+        </div>
+        <a href="mailto:alabibas.apparel@gmail.com">alabibas.apparel@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="footer-image">
+      <img src="images/tagline.webp" alt="Own the Look - Alabibas">
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>&copy; 2026 Alabibas. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  /* Edit the questions and answers here. */
+  var FAQ = [
+    {
+      name: "Registration",
+      intro: "Questions and answers about account creation in ALABIBAS website.",
+      items: [
+        ["Do I have to register as a member to shop on ALABIBAS?",
+         "Registration is recommended so you can track orders, save your delivery address and check out faster."],
+        ["How to register as a member of ALABIBAS?",
+         "Click “Login / Register” at the top right of any page, choose Register, fill in your details and submit the form."],
+        ["How can I update my account?",
+         "Log in, open your account page and edit your name, email or contact number, then save your changes."],
+        ["What if I forgot my password?",
+         "On the login page, click “Forgot password” and enter your email. We will send you a link to set a new password."],
+        ["How can I update my delivery address?",
+         "Log in and open the address section of your account to edit it. For an order already placed, contact us as soon as possible."]
+      ]
+    },
+    {
+      name: "Order",
+      intro: "Questions and answers about placing and tracking orders.",
+      items: [
+        ["How do I place an order?",
+         "Browse Products, add items to your Shopping Cart, then go to the cart and follow the checkout steps."],
+        ["Can I change or cancel my order?",
+         "Orders can be changed or cancelled only before they are shipped. Email us right away with your order details."],
+        ["How can I check my order status?",
+         "Use the Order Status link below or log in to your account to see the latest update on your order."]
+      ]
+    },
+    {
+      name: "Product",
+      intro: "Questions and answers about ALABIBAS products.",
+      items: [
+        ["How do I find my size?",
+         "Check the size guide on each product page and compare it with your own measurements."],
+        ["How should I care for my clothes?",
+         "Wash inside out in cold water and avoid bleach to keep prints and colors looking new."],
+        ["Is an item out of stock coming back?",
+         "Restocks vary by item. Follow our social media pages for announcements on new arrivals and restocks."]
+      ]
+    },
+    {
+      name: "Payment",
+      intro: "Questions and answers about payment methods.",
+      items: [
+        ["What payment methods are accepted?",
+         "We accept the payment options shown at checkout, such as e-wallets, bank transfer and cash on delivery where available."],
+        ["Is my payment information secure?",
+         "Yes. We do not store your full card or account details on our website."],
+        ["My payment did not go through. What should I do?",
+         "Check your balance and details, then try again. If the problem continues, contact us with a screenshot of the error."]
+      ]
+    },
+    {
+      name: "Shipping",
+      intro: "Questions and answers about delivery within the Philippines.",
+      items: [
+        ["Where do you deliver?",
+         "We deliver nationwide across the Philippines through our courier partners."],
+        ["How long does delivery take?",
+         "Delivery usually takes a few working days for Metro areas and longer for provincial or island locations."],
+        ["How much is the shipping fee?",
+         "The fee depends on your location and is shown at checkout before you confirm the order."]
+      ]
+    },
+    {
+      name: "Returns & Exchanges",
+      intro: "Questions and answers about returns and exchanges.",
+      items: [
+        ["Can I return or exchange an item?",
+         "Yes, if the item is unused, unwashed and has its tags attached. Contact us within the return period to start the process."],
+        ["What if I received a damaged or wrong item?",
+         "Send us your order number and clear photos of the item and packaging so we can arrange a replacement."],
+        ["Who pays for return shipping?",
+         "If the error is ours, we shoulder the shipping. For size or preference changes, the customer covers it."]
+      ]
+    },
+    {
+      name: "Refunds",
+      intro: "Questions and answers about refunds.",
+      items: [
+        ["When will I get my refund?",
+         "Approved refunds are processed after we receive and check the returned item. Timing depends on your payment method."],
+        ["How will I receive my refund?",
+         "Refunds are sent back through the original payment method whenever possible."],
+        ["Which items are not refundable?",
+         "Used, washed or altered items and items without tags cannot be refunded."]
+      ]
+    },
+    {
+      name: "Others",
+      intro: "Other questions about ALABIBAS.",
+      items: [
+        ["How can I contact ALABIBAS?",
+         "Email us at alabibas.apparel@gmail.com or send a message through the Contact Us page."],
+        ["Do you have a physical store?",
+         "Please check the Store Locator for updates on our stores and pop-up events."],
+        ["Where can I see your latest updates?",
+         "Follow us on Facebook, Instagram and TikTok using the icons in the footer."]
+      ]
+    }
+  ];
+
+  var tabs = document.getElementById("tabs");
+  var intro = document.getElementById("intro");
+  var list = document.getElementById("list");
+
+  function showCategory(index) {
+    var cat = FAQ[index];
+    intro.textContent = cat.intro;
+    list.innerHTML = "";
+
+    Array.prototype.forEach.call(tabs.children, function (b, i) {
+      b.setAttribute("aria-selected", i === index ? "true" : "false");
+    });
+
+    cat.items.forEach(function (qa, n) {
+      var item = document.createElement("div");
+      item.className = "faq-item";
+
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-controls", "ans-" + n);
+      btn.innerHTML = '<i class="fa-solid fa-plus"></i><span></span>';
+      btn.querySelector("span").textContent = qa[0];
+
+      var ans = document.createElement("div");
+      ans.className = "faq-answer";
+      ans.id = "ans-" + n;
+      ans.hidden = true;
+      ans.textContent = qa[1];
+
+      btn.addEventListener("click", function () {
+        var open = ans.hidden;
+        ans.hidden = !open;
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.querySelector("i").className = open ? "fa-solid fa-minus" : "fa-solid fa-plus";
+      });
+
+      item.appendChild(btn);
+      item.appendChild(ans);
+      list.appendChild(item);
+    });
+  }
+
+  FAQ.forEach(function (cat, i) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("role", "tab");
+    b.textContent = cat.name;
+    b.addEventListener("click", function () { showCategory(i); });
+    tabs.appendChild(b);
+  });
+
+  showCategory(0);
+</script>
+
+<script>
+  // header: show who is logged in (same keys login.html saves)
+  (function () {
+    var box = document.getElementById("authBox");
+    if (!box) return;
+    var user = null, admin = null;
+    try { user = JSON.parse(localStorage.getItem("alabibasUser")); } catch (e) {}
+    try { admin = JSON.parse(localStorage.getItem("alabibasAdmin")); } catch (e) {}
+    var who = admin || user;
+    if (!who) return;                          // not logged in: keep "Login / Register"
+
+    box.style.textDecoration = "none";
+    box.textContent = "Hi, " + (who.name || "there") + " | ";
+    if (admin) {
+      var panel = document.createElement("a");
+      panel.href = "admin.html";
+      panel.textContent = "Admin";
+      box.appendChild(panel);
+      box.appendChild(document.createTextNode(" | "));
+    }
+    var out = document.createElement("a");
+    out.href = "#";
+    out.textContent = "Logout";
+    out.addEventListener("click", function (e) {
+      e.preventDefault();
+      try { localStorage.removeItem("alabibasUser"); localStorage.removeItem("alabibasAdmin"); } catch (err) {}
+      location.reload();
+    });
+    box.appendChild(out);
+  })();
+</script>
+<script src="chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALABIBAS | Terms and Conditions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Poppins", Arial, sans-serif;
+    color: #000;
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Header (same as index) ---------- */
+  header {
+    background: #f8f0de;
+    padding: 14px 24px 14px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .top-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .top-row h1 { grid-column: 2; line-height: 0; }
+  .top-row h1 img { max-height: 48px; width: auto; }
+
+  .login-reg {
+    grid-column: 3;
+    justify-self: end;
+    font-size: 0.7rem;
+  }
+
+  .login-reg:hover { text-decoration: underline; }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 60px;
+  }
+
+  nav a {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  nav a:hover { text-decoration: underline; }
+  nav a.active { font-weight: 700; }
+
+  main { flex: 1; }
+
+  /* ---------- Policy page ---------- */
+  .policy-head {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 36px 20px 8px;
+    text-align: center;
+  }
+
+  .policy-head h2 {
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .policy-head p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .updated {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: #555;
+  }
+
+  .policy-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 26px 20px 44px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .policy-card {
+    background: #b0b998;
+    border-radius: 16px;
+    padding: 14px 14px 18px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .policy-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .policy-card h3 .title { text-decoration: underline; text-underline-offset: 3px; }
+
+  .num {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #f8f0de;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .policy-card p { margin-bottom: 8px; }
+
+  .policy-card ul { margin: 0 0 8px; padding-left: 16px; list-style: disc; }
+  .policy-card li { margin-bottom: 6px; }
+  .policy-card a { text-decoration: underline; }
+
+  /* ---------- Footer (same as index) ---------- */
+  footer {
+    margin-top: auto;
+    background: #f8f0de;
+    padding-top: 28px;
+  }
+
+  .footer-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+  }
+
+  .footer-cols {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .footer-col h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .footer-col a,
+  .footer-col p {
+    display: block;
+    font-size: 0.80rem;
+    color: #000;
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  .footer-col a:hover { text-decoration: underline; }
+
+  .socials {
+    display: flex;
+    gap: 8px;
+    margin: 4px 0 6px;
+  }
+
+  .socials a { display: inline-flex; }
+  .socials svg { width: 20px; height: 20px; }
+
+  .footer-image img {
+    display: block;
+    width: 200px;
+    height: auto;
+  }
+
+  .copyright {
+    border-top: 1px solid #d8cfba;
+    text-align: center;
+    font-size: 0.65rem;
+    padding: 14px 20px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .policy-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 700px) {
+    nav { gap: 8px 24px; }
+    .footer-main { justify-content: center; padding-left: 20px; }
+  }
+
+  @media (max-width: 520px) {
+    .policy-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="top-row">
+    <h1><a href="index.html"><img src="images/logo.webp" alt="ALABIBAS"></a></h1>
+    <span class="login-reg" id="authBox"><a href="login.html?next=terms.html" id="authLink">Login / Register</a></span>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Shopping Cart</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="aboutus.html">About Us</a>
+  </nav>
+</header>
+
+<main>
+  <section class="policy-head">
+    <h2>Terms and Conditions</h2>
+    <p>Welcome to ALABIBAS. These Terms and Conditions explain the rules for using our website, placing orders, and contacting our team. Please read them carefully before you shop with us.</p>
+    <span class="updated">Last updated: November 17, 2026</span>
+  </section>
+
+  <section class="policy-grid">
+
+    <article class="policy-card">
+      <h3><span class="num">1</span><span class="title">Acceptance of Terms</span></h3>
+      <p>By visiting, creating an account on, or placing an order through the ALABIBAS website, you agree to these Terms and Conditions and to our <a href="privacy.html">Privacy Policy</a>.</p>
+      <p>If you do not agree, please do not use our website. You must be at least 18 years old, or have a parent or guardian's permission, to place an order.</p>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">2</span><span class="title">Your Account</span></h3>
+      <p>To order or use our chat, you may need to create an account. You agree to:</p>
+      <ul>
+        <li>Give accurate and up-to-date information.</li>
+        <li>Keep your password private and secure.</li>
+        <li>Tell us right away if you think your account has been used without your permission.</li>
+      </ul>
+      <p>You are responsible for all activity under your account. We may suspend or close accounts that break these terms.</p>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">3</span><span class="title">Products &amp; Pricing</span></h3>
+      <p>We try to show our products, colors, sizes, and prices as accurately as possible. Colors may look slightly different depending on your screen.</p>
+      <ul>
+        <li>All prices are in Philippine Peso (PHP).</li>
+        <li>Prices and availability may change without notice.</li>
+        <li>If a price or description was shown in error, we may correct it or cancel the affected order and refund you in full.</li>
+      </ul>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">4</span><span class="title">Orders &amp; Payment</span></h3>
+      <p>Placing an order is an offer to buy. An order is only accepted once we confirm it.</p>
+      <ul>
+        <li>We may decline or cancel an order, for example because of limited stock, a pricing error, or suspected fraud.</li>
+        <li>Payment must be completed using the payment options shown at checkout.</li>
+        <li>Payments are handled by third-party providers. See our <a href="privacy.html">Privacy Policy</a> for details.</li>
+      </ul>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">5</span><span class="title">Shipping &amp; Delivery</span></h3>
+      <p>We ship through third-party couriers. Delivery times shown are estimates, not guarantees, and may be affected by weather, holidays, or courier delays.</p>
+      <ul>
+        <li>Please make sure your delivery address and contact number are correct.</li>
+        <li>Risk of loss passes to you once the courier delivers the order.</li>
+        <li>You can follow your order on our <a href="orderstatus.html">Order Status</a> page.</li>
+      </ul>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">6</span><span class="title">Returns, Refunds &amp; Exchanges</span></h3>
+      <p>Returns, refunds, and exchanges are handled according to our <a href="returns.html">Return &amp; Refund Policy</a>, which forms part of these terms.</p>
+      <p>Please read it before you buy. Eligible items must generally be reported within the time limits stated in that policy.</p>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">7</span><span class="title">Live Chat &amp; Communications</span></h3>
+      <p>Our chat box lets you send messages to the ALABIBAS team. By using it, you agree that:</p>
+      <ul>
+        <li>Your messages, name, and email are stored so we can reply and keep a record of your request.</li>
+        <li>Chat is for questions about our store and your orders. Please do not share card numbers or passwords.</li>
+        <li>We reply during customer support hours, 8AM &ndash; 5PM. Replies may not be instant.</li>
+        <li>Abusive, unlawful, or spam messages may lead to restricted access.</li>
+      </ul>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">8</span><span class="title">Acceptable Use</span></h3>
+      <p>When using our website, you agree not to:</p>
+      <ul>
+        <li>Break any law or the rights of others.</li>
+        <li>Try to hack, disrupt, or gain unauthorized access to the site or other users' accounts.</li>
+        <li>Use bots or automated tools to scrape the site or place bulk orders.</li>
+        <li>Upload harmful code or false information.</li>
+      </ul>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">9</span><span class="title">Intellectual Property</span></h3>
+      <p>The ALABIBAS name, logo, tagline "Own the Look", designs, photos, graphics, and website content belong to ALABIBAS or its licensors and are protected by law.</p>
+      <p>You may not copy, reproduce, sell, or use them for commercial purposes without our written permission.</p>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">10</span><span class="title">Limitation of Liability</span></h3>
+      <p>We do our best to keep the website available and error-free, but we provide it "as is" and cannot promise it will always be uninterrupted or free of errors.</p>
+      <p>To the fullest extent allowed by law, ALABIBAS is not liable for indirect or consequential losses arising from your use of the website. Our total liability for any order will not exceed the amount you paid for that order. Nothing here limits rights you have under Philippine consumer law.</p>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">11</span><span class="title">Governing Law</span></h3>
+      <p>These Terms and Conditions are governed by the laws of the Republic of the Philippines.</p>
+      <p>We encourage you to contact us first so we can try to resolve any concern directly. Any dispute that cannot be settled will be brought before the proper courts of Davao City.</p>
+    </article>
+
+    <article class="policy-card">
+      <h3><span class="num">12</span><span class="title">Changes &amp; Contact</span></h3>
+      <p>We may update these terms from time to time. The latest version will always be posted on this page with its updated date. Continued use of the website means you accept the changes.</p>
+      <p>Questions about these terms? Contact us:</p>
+      <ul>
+        <li>Store Name: ALABIBAS</li>
+        <li>Email: <a href="mailto:alabibas.apparel@gmail.com">alabibas.apparel@gmail.com</a></li>
+        <li>Customer Support Hours: 8AM &ndash; 5PM</li>
+      </ul>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="aboutus.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Condition</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M12 2a10 10 0 0 0-1.56 19.88v-7.02H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.86h-2.34v7.02A10 10 0 0 0 12 2z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#000" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.1 6.1 0 1 0 5.2 6V8.6a7.4 7.4 0 0 0 4.3 1.4V6.8a4.3 4.3 0 0 1-4.3-4.8z"/></svg>
+          </a>
+        </div>
+        <a href="mailto:alabibas.apparel@gmail.com">alabibas.apparel@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="footer-image">
+      <img src="images/tagline.webp" alt="Own the Look - Alabibas">
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>&copy; 2026 Alabibas. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // header: show who is logged in (same keys login.html saves)
+  (function () {
+    var box = document.getElementById("authBox");
+    if (!box) return;
+    var user = null, admin = null;
+    try { user = JSON.parse(localStorage.getItem("alabibasUser")); } catch (e) {}
+    try { admin = JSON.parse(localStorage.getItem("alabibasAdmin")); } catch (e) {}
+    var who = admin || user;
+    if (!who) return;                          // not logged in: keep "Login / Register"
+
+    box.style.textDecoration = "none";
+    box.textContent = "Hi, " + (who.name || "there") + " | ";
+    if (admin) {
+      var panel = document.createElement("a");
+      panel.href = "admin.html";
+      panel.textContent = "Admin";
+      box.appendChild(panel);
+      box.appendChild(document.createTextNode(" | "));
+    }
+    var out = document.createElement("a");
+    out.href = "#";
+    out.textContent = "Logout";
+    out.addEventListener("click", function (e) {
+      e.preventDefault();
+      try { localStorage.removeItem("alabibasUser"); localStorage.removeItem("alabibasAdmin"); } catch (err) {}
+      location.reload();
+    });
+    box.appendChild(out);
+  })();
+</script>
+<script src="chat.js"></script>
+</body>
+</html>
